@@ -1,0 +1,32 @@
+.footerBgImg {
+    background-image: url('../../../img/footer.png');
+    background-size: contain;
+}
+
+.footerBgImg span {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 114.68%;
+    color: #939393;
+}
+
+.footerBgImg Link {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 114.68%;
+    color: #3A4256;
+
+}
+
+.copyright {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 114.68%;
+    color: #000000;
+}
