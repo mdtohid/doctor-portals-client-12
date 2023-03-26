@@ -1,20 +1,21 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Navbar.css';
 
 const Navbar = () => {
     const menuItems =
         <>
-            <li><a>Home</a></li>
-            <li><a>About</a></li>
-            <li><a>Appointment</a></li>
-            <li><a>Reviews</a></li>
-            <li><a>Contract us</a></li>
-            <li><a>Login</a></li>
+            <li><Link to='/'>Home</Link ></li>
+            <li><Link >About</Link ></li>
+            <li><Link to='/appointment'>Appointment</Link ></li>
+            <li><Link >Reviews</Link ></li>
+            <li><Link >Contract us</Link ></li>
+            <li><Link >Login</Link ></li>
         </>
     return (
         <div className="navbar bg-base-100">
             <div className="navbar-start lg:ml-24">
-                <a className=" normal-case text-xl">Doctors portal</a>
+                <Link  className=" normal-case text-xl">Doctors portal</Link >
             </div>
 
             {/* sm breakpoint responsive   */}
