@@ -9,7 +9,7 @@ import Signup from './Components/Shared/Signup/Signup';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Dashboard from './Components/Dashboard/Dashboard/Dashboard';
-import MyAppointments from './Components/Dashboard/MyAppointments/MyAppointments';
+import MyAppointments from './Components/Dashboard/MyAppoitments/MyAppointments';
 import MyReview from './Components/Dashboard/MyReview/MyReview';
 
 
