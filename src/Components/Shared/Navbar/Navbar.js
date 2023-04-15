@@ -8,13 +8,14 @@ import './Navbar.css';
 const Navbar = () => {
     const [user, loading, error] = useAuthState(auth);
     const [signOut, loadingSignOut, errorSignOut] = useSignOut(auth);
-    const logOut=async()=>{
+    const logOut = async () => {
+        localStorage.removeItem('accessToken');
         await signOut();
     }
-    if(loading || loadingSignOut){
+    if (loading || loadingSignOut) {
         <Loading></Loading>
     }
-    if(error || errorSignOut){
+    if (error || errorSignOut) {
         console.log(error || errorSignOut);
     }
     const menuItems =
@@ -27,16 +28,19 @@ const Navbar = () => {
             {
                 user && <li><Link to='/dashboard'>Dashboard</Link ></li>
             }
-            <li >{user?
-            <Link onClick={logOut} className='btn btn-active btn-ghost' to='/login'>Sign Out</Link>
-            :
-            <Link to='/login'>Login</Link >
+            <li >{user ?
+                <Link onClick={logOut} className='btn btn-active btn-ghost' to='/login'>Sign Out</Link>
+                :
+                <Link to='/login'>Login</Link >
             }</li>
         </>
     return (
         <div className="navbar bg-base-100">
+            <label htmlFor="my-drawer-2" className="btn btn-primary
+            bg-gradient-to-r from-primary to-secondary text-white max-w-48 mr-3 drawer-button lg:hidden">Open drawer</label>
+
             <div className="navbar-start lg:ml-24">
-                <Link  className=" normal-case text-xl">Doctors portal</Link >
+                <Link className=" normal-case text-xl">Doctors portal</Link >
             </div>
 
             {/* sm breakpoint responsive   */}
@@ -50,7 +54,7 @@ const Navbar = () => {
                     </ul>
                 </div>
             </div>
-            
+
             {/* lg breakpoint responsive */}
             <div className="hidden lg:flex md:mr-20">
                 <ul className="menu menu-horizontal px-1 ">

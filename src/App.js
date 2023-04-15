@@ -11,6 +11,11 @@ import 'react-toastify/dist/ReactToastify.css';
 import Dashboard from './Components/Dashboard/Dashboard/Dashboard';
 import MyAppointments from './Components/Dashboard/MyAppoitments/MyAppointments';
 import MyReview from './Components/Dashboard/MyReview/MyReview';
+import MyHistory from './Components/Dashboard/MyHistory/MyHistory';
+import Users from './Components/Dashboard/Users/Users';
+import RequireAdmin from './Components/Shared/RequireAdmin/RequireAdmin';
+import AddDoctor from './Components/Dashboard/AddDoctor/AddDoctor';
+import ManageDoctor from './Components/Dashboard/ManageDoctor/ManageDoctor';
 
 
 function App() {
@@ -24,14 +29,22 @@ function App() {
             <Appointment></Appointment>
           </RequireAuth>
         }></Route>
+
         <Route path='/dashboard' element={
-          <RequireAuth>
-            <Dashboard>
-              <Route index element={<MyAppointments></MyAppointments>}></Route>
-              <Route path='/myReview' element={<MyReview></MyReview>}></Route>
-            </Dashboard>
-          </RequireAuth>
-        }></Route>
+            <RequireAuth>
+              <Dashboard>
+              </Dashboard>
+            </RequireAuth>
+          }>
+          <Route index element={<MyAppointments/>} />
+          <Route path='review' element={<MyReview/>} />
+          <Route path='history' element={<MyHistory/>} />
+          <Route path='users' element={<RequireAdmin><Users/></RequireAdmin>} />
+          <Route path='addDoctor' element={<RequireAdmin><AddDoctor/></RequireAdmin>} />
+          <Route path='users' element={<RequireAdmin><Users/></RequireAdmin>} />
+          <Route path='manageDoctor' element={<RequireAdmin><ManageDoctor/></RequireAdmin>} />
+        </Route>
+
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/signup' element={<Signup></Signup>}></Route>
       </Routes>
