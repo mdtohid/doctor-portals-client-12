@@ -6,7 +6,7 @@ import auth from '../../../firebase.init';
 
 const BookingModal = ({ treatment, date, setTreatment, refetch}) => {
     const [user, loading, error] = useAuthState(auth);
-    const { _id, name, slots } = treatment;
+    const { _id, name, slots, price } = treatment;
     const formattedDate = format(date, 'PP');
 
     const handleBooking = (event) => {
@@ -15,6 +15,7 @@ const BookingModal = ({ treatment, date, setTreatment, refetch}) => {
         const ServiceName = event.target.name.value;
         const email = event.target.email.value;
         const phone = event.target.phone.value;
+        const price = event.target.price.value;
 
         const booking = {
             treatmentId: _id,
@@ -23,7 +24,8 @@ const BookingModal = ({ treatment, date, setTreatment, refetch}) => {
             slot,
             patient: user.email,
             patientName: user.displayName,
-            phone: event.target.phone.value
+            phone: event.target.phone.value,
+            price
         }
 
         fetch("http://localhost:5000/booking", {
@@ -69,6 +71,8 @@ const BookingModal = ({ treatment, date, setTreatment, refetch}) => {
                         <input type="text" disabled value={user.displayName} name='name' placeholder="Your name" className="input input-bordered w-full max-w-xs" />
 
                         <input type="text" disabled value={user.email} name='email' placeholder="Email address" className="input input-bordered w-full max-w-xs" />
+
+                        <input type="number" name='price' placeholder="Price" className="input input-bordered w-full max-w-xs"  disabled value={price}/>
 
                         <input type="text" name='phone' placeholder="Phone number" className="input input-bordered w-full max-w-xs" />
 
